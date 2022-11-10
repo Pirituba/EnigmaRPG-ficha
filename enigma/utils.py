@@ -14,10 +14,12 @@ nypes = ['♠', '♡', '♢', '♣']
 
 
 class Ficha:
+    nome = None
     indiv = tables.indiv_zero
-    atq_insanidade = 0
     indiv_order = []
     disturbs = []
+    atq_insanidade = 0
+    dano_fisico = 0
 
 
 def create_ficha(baralho_inicial, max_value, ficha=None):
@@ -35,6 +37,10 @@ def create_ficha(baralho_inicial, max_value, ficha=None):
     # ficha = apply_virtude(ficha) #TODO
 
     return ficha
+
+
+def all_equal(iterator):
+    return len(set(iterator)) <= 1
 
 
 def define_indiv_order(ficha):
@@ -61,7 +67,7 @@ def sorteio_indiv(ficha, baralho_inicial, max_value):
         for atributo in individualizacao_dados[indiv]:
             print(f"### Embaralhou ###")
             baralho_sorteio = baralho_inicial.copy()
-            print(f"Sorteio para a individualização {map_names[indiv]}")
+            print(f"Sorteio para a individualização {tables.map_names[indiv]}")
             carta_sorteada = random.choice(baralho_sorteio)
             baralho_sorteio.remove(carta_sorteada)
             print(carta_sorteada)
@@ -86,14 +92,24 @@ def sorteio_indiv(ficha, baralho_inicial, max_value):
             valores_sorteados.append(valor_limitado)
 
         #Atribute the values to individualities
+        faltantes = list(individualizacao_dados[indiv].keys())
         for atributo in individualizacao_dados[indiv]:
-            #TODO Show remaining attributes
-            #TODO automatically apply last value
+            #TODO automatically apply reppeated values
             valor = None
+            print(faltantes)
+            faltantes.remove(atributo)
             while valor not in valores_sorteados:
-                valor = input(f"O atributo {map_names[atributo]} usara qual valor sorteado? ({valores_sorteados})")
-                if valor.isnumeric():
-                    valor = int(valor)
+                if all_equal(valores_sorteados):
+                    valor = valores_sorteados[0]
+                    print(f"{atributo} <- {valor}")
+                else:
+                    if len(valores_sorteados) > 1:
+                        valor = input(f"O atributo {tables.map_names[atributo]} usara qual valor sorteado? ({valores_sorteados})\n(próximos atributos: {faltantes})")
+                        if valor.isnumeric():
+                            valor = int(valor)
+                    else:
+                        valor = valores_sorteados[0]
+                        print(f"{atributo} <- {valor}")
             valores_sorteados.remove(valor)
             individualizacao_dados[indiv][atributo] = valor
         primeira_indiv = False
@@ -108,6 +124,11 @@ def apply_indiv_table(ficha, max_value):
     for indiv in ficha.indiv_order:
         for atributo in indiv_ficha_immutable[indiv]:
             valor_ficha = indiv_ficha_immutable[indiv][atributo]
+            # Debuffs ficha (atq_insanidade and dano_fisico)
+            if indiv == 'forca' and atributo == 'resistencia':
+                ficha.dano_fisico += int(tables.tab_debuff_ficha[indiv][atributo][str(valor_ficha)][0][1])
+            if indiv == 'sobrenatural' and atributo == 'forcmental':
+                ficha.atq_insanidade += int(tables.tab_debuff_ficha[indiv][atributo][str(valor_ficha)][0][1])
             operacoes = tables.tabela_individualizacao[indiv][atributo][str(valor_ficha)]
             if operacoes:
                 for operacao in operacoes:
@@ -148,7 +169,6 @@ def apply_disturbs(ficha):
     return ficha
 
 
-
 def interval(start, end):
     return range(start, end+1)
 
@@ -159,7 +179,7 @@ def cria_baralho(min, max, nypes=nypes):
         nypes = [nypes]
 
     if nypes is None:
-        for n in interval(start, end)(min, max):
+        for n in interval(min, max):
             baralho.append(n)
 
     for nype in nypes:
@@ -174,7 +194,7 @@ def obtain_atrb_father(atrb):
         return 'forca'
     if atrb in ('agilidade', 'proeficiencia', 'foco', 'equilibrio', 'reflexos'):
         return 'destreza'
-    if atrb in ('conhecimentos', 'raclogico', 'controleemocional', 'curiosidade', 'experiencia'):
+    if atrb in ('conhecimentos', 'raclogico', 'controleemocional', 'curiosidade', 'digiligencia'):
         return 'intelecto'
     if atrb in ('interpretacao', 'percepcao', 'tino', 'intuicao', 'empatia'):
         return 'sabedoria'
@@ -210,12 +230,12 @@ def plot_indiv(individualizacao, indiv, ax):
         valor = individualizacao[indiv][atributo]
         avg += int(valor)
         array[0:valor] = 0
-        df[map_names[atributo]] = array[::-1].tolist()
+        df[tables.map_names[atributo]] = array[::-1].tolist()
     avg = math.floor(avg/len(atributos))
     print(df)
 
     ax.text(0.5, 0.49, avg, horizontalalignment='center', verticalalignment='center', transform=ax.transAxes, fontsize=40)
-    ax.set_title(map_names[indiv], fontweight="bold", size=20)
+    ax.set_title(tables.map_names[indiv], fontweight="bold", size=20)
     pie_heatmap(df, vmin=-1, vmax=1, inner_r=0.2, atrb=indiv, ax=ax)
 
 
@@ -227,45 +247,3 @@ def plot_ficha(ficha):
         plot_indiv(ficha.indiv, indiv, axs[x])
         x += 1
     plt.show();
-
-
-map_names = {
-    'forca': 'Força',
-    'agressividade': 'Agressividade',
-    'luta': 'Luta',
-    'resistencia': 'Resistência',
-    'vigor': 'Vigor',
-    'brutalidade': 'Brutalidade',
-    'destreza': 'Destreza',
-    'agilidade': 'Agilidade',
-    'proeficiencia': 'Proeficiência',
-    'equilibrio': 'Equilibrio',
-    'foco': 'Foco',
-    'reflexos': 'Reflexos',
-    'intelecto': 'Intelecto',
-    'conhecimentos': 'Conhecimentos',
-    'raclogico': 'Raciocinio Lógico',
-    'controleemocional': 'Controle Emocional',
-    'curiosidade': 'Curiosidade',
-    'experiencia': 'Experiência',
-    'sabedoria': 'Sabedoria',
-    'interpretacao': 'Interpretação',
-    'percepcao': 'Percepção',
-    'tino': 'Tino',
-    'intuicao': 'Intuição',
-    'empatia': 'Empatia',
-    'carisma': 'Carisma',
-    'aparencia': 'Aparência',
-    'simpatia': 'Simpatia',
-    'socializacao': 'Socialização',
-    'blefe': 'Blefe',
-    'ego': 'Ego',
-    'sobrenatural': 'Sobrenatural',
-    'religiao': 'Religião',
-    'mediunidade': 'Mediunidade',
-    'conhecocult': 'Conhecimento do oculto',
-    'forcmental': 'Força Mental',
-    'clarividencia': 'Clarividência'
-}
-
-

@@ -18,7 +18,7 @@ indiv_zero = {
         'raclogico': 0,
         'controleemocional': 0,
         'curiosidade': 0,
-        'experiencia': 0
+        'digiligencia': 0
     },
     'sabedoria': {
         'interpretacao': 0,
@@ -43,6 +43,44 @@ indiv_zero = {
     }
 }
 
+map_names = {
+    'forca': 'Força',
+    'agressividade': 'Agressividade',
+    'luta': 'Luta',
+    'resistencia': 'Resistência',
+    'vigor': 'Vigor',
+    'brutalidade': 'Brutalidade',
+    'destreza': 'Destreza',
+    'agilidade': 'Agilidade',
+    'proeficiencia': 'Proeficiência',
+    'equilibrio': 'Equilibrio',
+    'foco': 'Foco',
+    'reflexos': 'Reflexos',
+    'intelecto': 'Intelecto',
+    'conhecimentos': 'Conhecimentos',
+    'raclogico': 'Raciocinio Lógico',
+    'controleemocional': 'Controle Emocional',
+    'curiosidade': 'Curiosidade',
+    'digiligencia': 'Diligência',
+    'sabedoria': 'Sabedoria',
+    'interpretacao': 'Interpretação',
+    'percepcao': 'Percepção',
+    'tino': 'Tino',
+    'intuicao': 'Intuição',
+    'empatia': 'Empatia',
+    'carisma': 'Carisma',
+    'aparencia': 'Aparência',
+    'simpatia': 'Simpatia',
+    'socializacao': 'Socialização',
+    'blefe': 'Blefe',
+    'ego': 'Ego',
+    'sobrenatural': 'Sobrenatural',
+    'religiao': 'Religião',
+    'mediunidade': 'Mediunidade',
+    'conhecocult': 'Conhecimento do oculto',
+    'forcmental': 'Força Mental',
+    'clarividencia': 'Clarividência'
+}
 
 tabela_individualizacao = {
     'forca': {
@@ -71,16 +109,16 @@ tabela_individualizacao = {
             '10': [('brutalidade', 3), ('equilibrio', 3)]
         },
         'resistencia': {
-            '1': [('brutalidade', -2)], #TODO Dano fisico
-            '2': [('brutalidade', -2)], #TODO Dano fisico
-            '3': [('brutalidade', -1)], #TODO Dano fisico
-            '4': [('brutalidade', -1)], #TODO Dano fisico
+            '1': [('brutalidade', -2)],
+            '2': [('brutalidade', -2)],
+            '3': [('brutalidade', -1)],
+            '4': [('brutalidade', -1)],
             '5': [],
-            '6': [('vigor', 1), ('foco', 1)], #TODO Dano fisico
-            '7': [('vigor', 1), ('foco', 1)], #TODO Dano fisico
-            '8': [('vigor', 2), ('foco', 2)], #TODO Dano fisico
-            '9': [('vigor', 2), ('foco', 2)], #TODO Dano fisico
-            '10': [('vigor', 3), ('foco', 3)] #TODO Dano fisico
+            '6': [('vigor', 1), ('foco', 1)],
+            '7': [('vigor', 1), ('foco', 1)],
+            '8': [('vigor', 2), ('foco', 2)],
+            '9': [('vigor', 2), ('foco', 2)],
+            '10': [('vigor', 3), ('foco', 3)]
         },
         'vigor': {
             '1':  [('agilidade', -2), ('equilibrio', -2)],
@@ -176,11 +214,11 @@ tabela_individualizacao = {
             '3': [('controleemocional', -1), ('raclogico', -1), ('foco', -1)],
             '4': [('controleemocional', -1), ('raclogico', -1), ('foco', -1)],
             '5': [],
-            '6': [('proeficiencia', 1), ('foco', 1), ('experiencia', 1)],
-            '7': [('proeficiencia', 1), ('foco', 1), ('experiencia', 1)],
-            '8': [('proeficiencia', 2), ('foco', 2), ('experiencia', 2)],
-            '9': [('proeficiencia', 2), ('foco', 2), ('experiencia', 2)],
-            '10': [('proeficiencia', 3), ('foco', 3), ('experiencia', 3)]
+            '6': [('proeficiencia', 1), ('foco', 1), ('digiligencia', 1)],
+            '7': [('proeficiencia', 1), ('foco', 1), ('digiligencia', 1)],
+            '8': [('proeficiencia', 2), ('foco', 2), ('digiligencia', 2)],
+            '9': [('proeficiencia', 2), ('foco', 2), ('digiligencia', 2)],
+            '10': [('proeficiencia', 3), ('foco', 3), ('digiligencia', 3)]
         },
         'raclogico': {
             '1': [('percepcao', -2), ('interpretacao', -2)],
@@ -218,7 +256,7 @@ tabela_individualizacao = {
             '9': [('intuicao', 2), ('conhecocult', 2)],
             '10': [('intuicao', 3), ('conhecocult', 3)]
         },
-        'experiencia': {
+        'digiligencia': {
             '1': [],
             '2': [],
             '3': [],
@@ -233,16 +271,16 @@ tabela_individualizacao = {
     },
     'sabedoria': {
         'interpretacao': {
-            '1': [('experiencia', -2), ('conhecimento', -2), ('percepcao', -2)],
-            '2': [('experiencia', -2), ('conhecimento', -2), ('percepcao', -2)],
-            '3': [('experiencia', -1), ('conhecimento', -1), ('percepcao', -1)],
-            '4': [('experiencia', -1), ('conhecimento', -1), ('percepcao', -1)],
+            '1': [('digiligencia', -2), ('conhecimento', -2), ('percepcao', -2)],
+            '2': [('digiligencia', -2), ('conhecimento', -2), ('percepcao', -2)],
+            '3': [('digiligencia', -1), ('conhecimento', -1), ('percepcao', -1)],
+            '4': [('digiligencia', -1), ('conhecimento', -1), ('percepcao', -1)],
             '5': [],
-            '6': [('experiencia', 1), ('conhecimento', 1), ('percepcao', 1)],
-            '7': [('experiencia', 1), ('conhecimento', 1), ('percepcao', 1)],
-            '8': [('experiencia', 2), ('conhecimento', 2), ('percepcao', 2)],
-            '9': [('experiencia', 2), ('conhecimento', 2), ('percepcao', 2)],
-            '10': [('experiencia', 3), ('conhecimento', 3), ('percepcao', 3)]
+            '6': [('digiligencia', 1), ('conhecimento', 1), ('percepcao', 1)],
+            '7': [('digiligencia', 1), ('conhecimento', 1), ('percepcao', 1)],
+            '8': [('digiligencia', 2), ('conhecimento', 2), ('percepcao', 2)],
+            '9': [('digiligencia', 2), ('conhecimento', 2), ('percepcao', 2)],
+            '10': [('digiligencia', 3), ('conhecimento', 3), ('percepcao', 3)]
         },
         'percepcao': {
             '1': [('tino', -2), ('reflexo', -2)],
@@ -312,11 +350,11 @@ tabela_individualizacao = {
             '3': [('empatia', -1), ('ego', 1)],
             '4': [('empatia', -1), ('ego', 1)],
             '5': [],
-            '6': [('socializacao', 1), ('experiencia', 2)],
-            '7': [('socializacao', 1), ('experiencia', 2)],
-            '8': [('socializacao', 2), ('experiencia', 2)],
-            '9': [('socializacao', 2), ('experiencia', 2)],
-            '10': [('socializacao', 3), ('experiencia', 3)]
+            '6': [('socializacao', 1), ('digiligencia', 2)],
+            '7': [('socializacao', 1), ('digiligencia', 2)],
+            '8': [('socializacao', 2), ('digiligencia', 2)],
+            '9': [('socializacao', 2), ('digiligencia', 2)],
+            '10': [('socializacao', 3), ('digiligencia', 3)]
         },
         'socializacao': {
             '1': [('ego', -2), ('blefe', 2)],
@@ -324,11 +362,11 @@ tabela_individualizacao = {
             '3': [('ego', -1), ('blefe', 1)],
             '4': [('ego', -1), ('blefe', 1)],
             '5': [],
-            '6': [('blefe', 1), ('experiencia', 1)],
-            '7': [('blefe', 1), ('experiencia', 1)],
-            '8': [('blefe', 2), ('experiencia', 2)],
-            '9': [('blefe', 2), ('experiencia', 2)],
-            '10': [('blefe', 3), ('experiencia', 3)]
+            '6': [('blefe', 1), ('digiligencia', 1)],
+            '7': [('blefe', 1), ('digiligencia', 1)],
+            '8': [('blefe', 2), ('digiligencia', 2)],
+            '9': [('blefe', 2), ('digiligencia', 2)],
+            '10': [('blefe', 3), ('digiligencia', 3)]
         },
         'blefe': {
             '1': [('controleemoc', -3)],
@@ -336,11 +374,11 @@ tabela_individualizacao = {
             '3': [('controleemoc', -1)],
             '4': [('controleemoc', -1)],
             '5': [],
-            '6': [('experiencia', 1)],
-            '7': [('experiencia', 1)],
-            '8': [('experiencia', 2)],
-            '9': [('experiencia', 2)],
-            '10': [('experiencia', 3)]
+            '6': [('digiligencia', 1)],
+            '7': [('digiligencia', 1)],
+            '8': [('digiligencia', 2)],
+            '9': [('digiligencia', 2)],
+            '10': [('digiligencia', 3)]
         },
         'ego': {
             '1': [('vigor', -2)],
@@ -393,16 +431,16 @@ tabela_individualizacao = {
             '10': [('forcmental', 3)]
         },
         'forcmental': {
-            '1': [('controleemoc', -1)], #TODO ataque insanidade
-            '2': [('controleemoc', -1)], #TODO ataque insanidade
-            '3': [('controleemoc', -2)], #TODO ataque insanidade
-            '4': [('controleemoc', -2)], #TODO ataque insanidade
+            '1': [('controleemoc', -1)],
+            '2': [('controleemoc', -1)],
+            '3': [('controleemoc', -2)],
+            '4': [('controleemoc', -2)],
             '5': [],
-            '6': [('controleemoc', 1)], #TODO ataque insanidade
-            '7': [('controleemoc', 1)], #TODO ataque insanidade
-            '8': [('controleemoc', 2)], #TODO ataque insanidade
-            '9': [('controleemoc', 2)], #TODO ataque insanidade
-            '10': [('controleemoc', 3)], #TODO ataque insanidade
+            '6': [('controleemoc', 1)],
+            '7': [('controleemoc', 1)],
+            '8': [('controleemoc', 2)],
+            '9': [('controleemoc', 2)],
+            '10': [('controleemoc', 3)]
         },
         'clarividencia': {
             '1': [],
@@ -415,6 +453,52 @@ tabela_individualizacao = {
             '8': [],
             '9': [],
             '10': []
-        },
+        }
     }
 }
+
+tab_debuff_ficha = {
+    'forca': {
+        'resistencia': {
+            '1': [('dano_fisico', 2)],
+            '2': [('dano_fisico', 2)],
+            '3': [('dano_fisico', 1)],
+            '4': [('dano_fisico', 1)],
+            '5': [('dano_fisico', 0)],
+            '6': [('dano_fisico', 0)],
+            '7': [('dano_fisico', 0)],
+            '8': [('dano_fisico', 0)],
+            '9': [('dano_fisico', 0)],
+            '10':[('dano_fisico', 0)]
+        }
+    },
+    'sobrenatural': {
+        'forcmental': {
+            '1': [('atq_insanidade', 1)],
+            '2': [('atq_insanidade', 1)],
+            '3': [('atq_insanidade', 2)],
+            '4': [('atq_insanidade', 2)],
+            '5': [('atq_insanidade', 0)],
+            '6': [('atq_insanidade', 0)],
+            '7': [('atq_insanidade', 0)],
+            '8': [('atq_insanidade', 0)],
+            '9': [('atq_insanidade', 0)],
+            '10':[('atq_insanidade', 0)]
+        }
+    }
+}
+
+#TODO Disturbio
+# disturbios = {
+#     'agorafobia':[]
+# }
+
+#TODO Pericias
+# pericias = {
+#     '':[]
+# }
+
+#TODO Virtude
+# virtudes = {
+#     'agorafobia':[]
+# }
