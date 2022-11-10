@@ -194,7 +194,7 @@ def obtain_atrb_father(atrb):
         return 'forca'
     if atrb in ('agilidade', 'proeficiencia', 'foco', 'equilibrio', 'reflexos'):
         return 'destreza'
-    if atrb in ('conhecimentos', 'raclogico', 'controleemocional', 'curiosidade', 'digiligencia'):
+    if atrb in ('conhecimentos', 'raclogico', 'controleemocional', 'curiosidade', 'inspecao'):
         return 'intelecto'
     if atrb in ('interpretacao', 'percepcao', 'tino', 'intuicao', 'empatia'):
         return 'sabedoria'

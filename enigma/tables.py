@@ -18,7 +18,7 @@ indiv_zero = {
         'raclogico': 0,
         'controleemocional': 0,
         'curiosidade': 0,
-        'digiligencia': 0
+        'inspecao': 0
     },
     'sabedoria': {
         'interpretacao': 0,
@@ -61,7 +61,7 @@ map_names = {
     'raclogico': 'Raciocinio Lógico',
     'controleemocional': 'Controle Emocional',
     'curiosidade': 'Curiosidade',
-    'digiligencia': 'Diligência',
+    'inspecao': 'Inspeção',
     'sabedoria': 'Sabedoria',
     'interpretacao': 'Interpretação',
     'percepcao': 'Percepção',
@@ -214,11 +214,11 @@ tabela_individualizacao = {
             '3': [('controleemocional', -1), ('raclogico', -1), ('foco', -1)],
             '4': [('controleemocional', -1), ('raclogico', -1), ('foco', -1)],
             '5': [],
-            '6': [('proeficiencia', 1), ('foco', 1), ('digiligencia', 1)],
-            '7': [('proeficiencia', 1), ('foco', 1), ('digiligencia', 1)],
-            '8': [('proeficiencia', 2), ('foco', 2), ('digiligencia', 2)],
-            '9': [('proeficiencia', 2), ('foco', 2), ('digiligencia', 2)],
-            '10': [('proeficiencia', 3), ('foco', 3), ('digiligencia', 3)]
+            '6': [('proeficiencia', 1), ('foco', 1), ('inspecao', 1)],
+            '7': [('proeficiencia', 1), ('foco', 1), ('inspecao', 1)],
+            '8': [('proeficiencia', 2), ('foco', 2), ('inspecao', 2)],
+            '9': [('proeficiencia', 2), ('foco', 2), ('inspecao', 2)],
+            '10': [('proeficiencia', 3), ('foco', 3), ('inspecao', 3)]
         },
         'raclogico': {
             '1': [('percepcao', -2), ('interpretacao', -2)],
@@ -256,7 +256,7 @@ tabela_individualizacao = {
             '9': [('intuicao', 2), ('conhecocult', 2)],
             '10': [('intuicao', 3), ('conhecocult', 3)]
         },
-        'digiligencia': {
+        'inspecao': {
             '1': [],
             '2': [],
             '3': [],
@@ -271,16 +271,16 @@ tabela_individualizacao = {
     },
     'sabedoria': {
         'interpretacao': {
-            '1': [('digiligencia', -2), ('conhecimento', -2), ('percepcao', -2)],
-            '2': [('digiligencia', -2), ('conhecimento', -2), ('percepcao', -2)],
-            '3': [('digiligencia', -1), ('conhecimento', -1), ('percepcao', -1)],
-            '4': [('digiligencia', -1), ('conhecimento', -1), ('percepcao', -1)],
+            '1': [('inspecao', -2), ('conhecimento', -2), ('percepcao', -2)],
+            '2': [('inspecao', -2), ('conhecimento', -2), ('percepcao', -2)],
+            '3': [('inspecao', -1), ('conhecimento', -1), ('percepcao', -1)],
+            '4': [('inspecao', -1), ('conhecimento', -1), ('percepcao', -1)],
             '5': [],
-            '6': [('digiligencia', 1), ('conhecimento', 1), ('percepcao', 1)],
-            '7': [('digiligencia', 1), ('conhecimento', 1), ('percepcao', 1)],
-            '8': [('digiligencia', 2), ('conhecimento', 2), ('percepcao', 2)],
-            '9': [('digiligencia', 2), ('conhecimento', 2), ('percepcao', 2)],
-            '10': [('digiligencia', 3), ('conhecimento', 3), ('percepcao', 3)]
+            '6': [('inspecao', 1), ('conhecimento', 1), ('percepcao', 1)],
+            '7': [('inspecao', 1), ('conhecimento', 1), ('percepcao', 1)],
+            '8': [('inspecao', 2), ('conhecimento', 2), ('percepcao', 2)],
+            '9': [('inspecao', 2), ('conhecimento', 2), ('percepcao', 2)],
+            '10': [('inspecao', 3), ('conhecimento', 3), ('percepcao', 3)]
         },
         'percepcao': {
             '1': [('tino', -2), ('reflexo', -2)],
@@ -350,11 +350,11 @@ tabela_individualizacao = {
             '3': [('empatia', -1), ('ego', 1)],
             '4': [('empatia', -1), ('ego', 1)],
             '5': [],
-            '6': [('socializacao', 1), ('digiligencia', 2)],
-            '7': [('socializacao', 1), ('digiligencia', 2)],
-            '8': [('socializacao', 2), ('digiligencia', 2)],
-            '9': [('socializacao', 2), ('digiligencia', 2)],
-            '10': [('socializacao', 3), ('digiligencia', 3)]
+            '6': [('socializacao', 1), ('inspecao', 2)],
+            '7': [('socializacao', 1), ('inspecao', 2)],
+            '8': [('socializacao', 2), ('inspecao', 2)],
+            '9': [('socializacao', 2), ('inspecao', 2)],
+            '10': [('socializacao', 3), ('inspecao', 3)]
         },
         'socializacao': {
             '1': [('ego', -2), ('blefe', 2)],
@@ -362,11 +362,11 @@ tabela_individualizacao = {
             '3': [('ego', -1), ('blefe', 1)],
             '4': [('ego', -1), ('blefe', 1)],
             '5': [],
-            '6': [('blefe', 1), ('digiligencia', 1)],
-            '7': [('blefe', 1), ('digiligencia', 1)],
-            '8': [('blefe', 2), ('digiligencia', 2)],
-            '9': [('blefe', 2), ('digiligencia', 2)],
-            '10': [('blefe', 3), ('digiligencia', 3)]
+            '6': [('blefe', 1), ('inspecao', 1)],
+            '7': [('blefe', 1), ('inspecao', 1)],
+            '8': [('blefe', 2), ('inspecao', 2)],
+            '9': [('blefe', 2), ('inspecao', 2)],
+            '10': [('blefe', 3), ('inspecao', 3)]
         },
         'blefe': {
             '1': [('controleemoc', -3)],
@@ -374,11 +374,11 @@ tabela_individualizacao = {
             '3': [('controleemoc', -1)],
             '4': [('controleemoc', -1)],
             '5': [],
-            '6': [('digiligencia', 1)],
-            '7': [('digiligencia', 1)],
-            '8': [('digiligencia', 2)],
-            '9': [('digiligencia', 2)],
-            '10': [('digiligencia', 3)]
+            '6': [('inspecao', 1)],
+            '7': [('inspecao', 1)],
+            '8': [('inspecao', 2)],
+            '9': [('inspecao', 2)],
+            '10': [('inspecao', 3)]
         },
         'ego': {
             '1': [('vigor', -2)],
