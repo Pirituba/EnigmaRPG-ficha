@@ -1,33 +1,34 @@
 import math
+import random
+
 import matplotlib as mpl
 import matplotlib.cm as cm
 import matplotlib.pyplot as plt
-import random
-
 import numpy as np
 import pandas as pd
 
-import tables
+from .tables import *
 
 
-nypes = ['♠', '♡', '♢', '♣']
+all_nypes = ['♠', '♡', '♢', '♣']
+# initial_deck = cria_baralho(min=1, max=6, nypes=['♠'])
 
 
 class Ficha:
     nome = None
-    indiv = tables.indiv_zero
+    indiv = indiv_zero
     indiv_order = []
     disturbs = []
     atq_insanidade = 0
     dano_fisico = 0
 
 
-def create_ficha(baralho_inicial, max_value, ficha=None):
+def create_ficha(baralho_inicial, max_value=6, ficha=None):
     if ficha is None:
         ficha = Ficha()
     if not ficha.indiv_order:
         ficha = define_indiv_order(ficha)
-    if ficha.indiv == tables.indiv_zero:
+    if ficha.indiv == indiv_zero:
         ficha = sorteio_indiv(ficha, baralho_inicial, max_value)
         plot_ficha(ficha)
     ficha = apply_indiv_table(ficha, max_value)
@@ -67,7 +68,7 @@ def sorteio_indiv(ficha, baralho_inicial, max_value):
         for atributo in individualizacao_dados[indiv]:
             print(f"### Embaralhou ###")
             baralho_sorteio = baralho_inicial.copy()
-            print(f"Sorteio para a individualização {tables.map_names[indiv]}")
+            print(f"Sorteio para a individualização {map_names[indiv]}")
             carta_sorteada = random.choice(baralho_sorteio)
             baralho_sorteio.remove(carta_sorteada)
             print(carta_sorteada)
@@ -104,7 +105,7 @@ def sorteio_indiv(ficha, baralho_inicial, max_value):
                     print(f"{atributo} <- {valor}")
                 else:
                     if len(valores_sorteados) > 1:
-                        valor = input(f"O atributo {tables.map_names[atributo]} usara qual valor sorteado? ({valores_sorteados})\n(próximos atributos: {faltantes})")
+                        valor = input(f"O atributo {map_names[atributo]} usara qual valor sorteado? ({valores_sorteados})\n(próximos atributos: {faltantes})")
                         if valor.isnumeric():
                             valor = int(valor)
                     else:
@@ -126,10 +127,10 @@ def apply_indiv_table(ficha, max_value):
             valor_ficha = indiv_ficha_immutable[indiv][atributo]
             # Debuffs ficha (atq_insanidade and dano_fisico)
             if indiv == 'forca' and atributo == 'resistencia':
-                ficha.dano_fisico += int(tables.tab_debuff_ficha[indiv][atributo][str(valor_ficha)][0][1])
+                ficha.dano_fisico += int(tab_debuff_ficha[indiv][atributo][str(valor_ficha)][0][1])
             if indiv == 'sobrenatural' and atributo == 'forcmental':
-                ficha.atq_insanidade += int(tables.tab_debuff_ficha[indiv][atributo][str(valor_ficha)][0][1])
-            operacoes = tables.tabela_individualizacao[indiv][atributo][str(valor_ficha)]
+                ficha.atq_insanidade += int(tab_debuff_ficha[indiv][atributo][str(valor_ficha)][0][1])
+            operacoes = tabela_individualizacao[indiv][atributo][str(valor_ficha)]
             if operacoes:
                 for operacao in operacoes:
                     operation_atr = operacao[0]
@@ -173,7 +174,7 @@ def interval(start, end):
     return range(start, end+1)
 
 
-def cria_baralho(min, max, nypes=nypes):
+def cria_baralho(min=1, max=6, nypes=['♠']):
     baralho = []
     if not isinstance(nypes, list):
         nypes = [nypes]
@@ -230,12 +231,12 @@ def plot_indiv(individualizacao, indiv, ax):
         valor = individualizacao[indiv][atributo]
         avg += int(valor)
         array[0:valor] = 0
-        df[tables.map_names[atributo]] = array[::-1].tolist()
+        df[map_names[atributo]] = array[::-1].tolist()
     avg = math.floor(avg/len(atributos))
     print(df)
 
     ax.text(0.5, 0.49, avg, horizontalalignment='center', verticalalignment='center', transform=ax.transAxes, fontsize=40)
-    ax.set_title(tables.map_names[indiv], fontweight="bold", size=20)
+    ax.set_title(map_names[indiv], fontweight="bold", size=20)
     pie_heatmap(df, vmin=-1, vmax=1, inner_r=0.2, atrb=indiv, ax=ax)
 
 
